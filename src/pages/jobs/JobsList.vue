@@ -1,23 +1,101 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
       <p>{{ error }}</p>
     </base-dialog>
     <section>
       <job-filter @change-filter="setFilters"></job-filter>
     </section>
     <section>
-      <base-card>
-        <div class="controls">
-          <base-button mode="outline" @click="loadJobs(true)">Refresh</base-button>
-          <base-button link to="/auth?redirect=register" v-if="!isLoggedIn">Login to Register a new Job</base-button>
-          <base-button v-if="isLoggedIn && !isJob && !isLoading" link to="/register">Register a Job</base-button>
+     
+
+
+        <div class="search-bar">
+
+          <form class="search-bar" style="display: flex;justify-content:center">
+            <div class="input-icons">
+              <i
+                class="fas fa-search"
+                style="color: blue; margin: 10px"
+              ></i>
+              <input
+                type="text" 
+                placeholder="          Keyword" class="form-input"
+              />
+            </div>
+
+
+            <div class="input-icons">
+              <i
+                class="fas fa-hand-holding-usd"
+                style="color: blue; margin: 10px"
+              ></i>
+              <input
+                type="number" 
+                placeholder="          Salary Range" class="form-input"
+              />
+            </div>
+
+            <div class="input-icons">
+              <i
+                class="fas fa-user-tie"
+                style="color: blue; margin: 10px"
+              ></i>
+              <input
+                type="text"
+                placeholder="          Job Type"
+                class="form-input"
+              />
+            </div>
+
+            <div class="input-icons">
+              <i  
+                class="fas fa-map-marked-alt"
+                style="color: blue; margin: 10px"
+              ></i>
+              <input
+                type="text"
+                placeholder="          Location"
+                class="form-input"
+              />
+            </div>
+
+            <div class="input-icons">
+            <base-button class="local-button"> Find </base-button>
+            </div>
+
+          </form>
         </div>
+        <p>                                                               </p>
+
+
+        <div class="controls">
+          <base-button class="local-button" @click="loadJobs(true)"
+            ><i class="fas fa-sync-alt"></i></base-button
+          >
+          <base-button link to="/auth?redirect=register" v-if="!isLoggedIn"
+            class="local-button" style="font-size:12px">Login to Register a new Job</base-button
+          >
+          <base-button
+            v-if="isLoggedIn && !isJob && !isLoading"
+            link
+            to="/register"
+            >Register a Job</base-button
+          >
+        </div>
+
+
+
         <div v-if="isLoading">
           <base-spinner></base-spinner>
         </div>
         <ul v-else-if="hasJobs">
           <job-item
+            class="job_item"
             v-for="job in filteredJobs"
             :key="job.id"
             :id="job.id"
@@ -28,7 +106,7 @@
           ></job-item>
         </ul>
         <h3 v-else>No jobs found.</h3>
-      </base-card>
+      
     </section>
   </div>
 </template>
@@ -105,14 +183,59 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
+ul {
+  display: flexbox;
+  justify-content: space-between;
+  position: relative;
+  max-width: 70vw;
+  right: -28vw;
+  list-style: none;
+  margin-top: 0;
+  padding: 0.5vw;
+}
+.job_item {
+  padding: 0.5vw;
+  background-color: white;
+}
 .controls {
   display: flex;
   justify-content: space-between;
 }
+
+.search-bar > * {
+  height: 35px;
+  border: transparent;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+  border: transparent;
+  border-radius: 10px;
+}
+
+.local-button{
+  color: white;
+  height: 35px;
+  background: #0062FF;
+  margin: 0;
+  margin-top:1px;
+  border: #0062FF;
+  border-radius: 5px;
+}
+
+.form-input{
+  margin-left: 0px;
+   height: 35px;
+    padding-left: 40px;
+    border:transparent;
+}
+
+
+
 </style>

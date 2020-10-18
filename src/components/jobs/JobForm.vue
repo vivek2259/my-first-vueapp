@@ -65,7 +65,7 @@
           v-model="areas.val"
           @blur="clearValidity('areas')"
         />
-        <label for="vuejs">Vuejs Advisory</label>
+        <label for="vuejs">Vuejs Expert</label>
       </div>
       <p v-if="!areas.isValid">At least one expertise must be selected.</p>
     </div>
@@ -152,7 +152,7 @@ export default {
 
 <style scoped>
 .form-control {
-  margin: 0.5rem 0;
+  margin-left: 80vw 1px;
 }
 
 label {

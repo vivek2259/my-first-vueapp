@@ -33,13 +33,13 @@ export default {
 button,
 a {
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
+  padding: 0.7rem 1.5rem;
+  margin-inline: 5px;
+  
+  background-color: #0062FF;
   color: white;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 5px;
   margin-right: 0.5rem;
   display: inline-block;
 }
@@ -48,7 +48,7 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #270041;
+  background-color: #bbb;
   border-color: #270041;
 }
 

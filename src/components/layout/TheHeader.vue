@@ -2,11 +2,17 @@
   <header>
     <nav>
       <h1>
-        <router-link to="/">Find a Job</router-link>
+        
+        <router-link to="/">
+        <span style="font-size: 1.2em; color: #0062ff">
+          <i class="fab fa-creative-commons-sampling"></i>
+        </span>
+         Milao
+        </router-link>
       </h1>
       <ul>
         <li>
-          <router-link to="/jobs">All Jobs</router-link>
+          <router-link to="/jobs" >All Jobs</router-link>
         </li>
         <li v-if="isLoggedIn">
           <router-link to="/requests">Requests</router-link>
@@ -27,39 +33,54 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
-    }
+    },
   },
   methods: {
     logout() {
       this.$store.dispatch('logout');
       this.$router.replace('/jobs');
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
 header {
   width: 100%;
-  height: 5rem;
-  background-color: #3d008d;
+  height: 3rem;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 header a {
-  text-decoration: none;
-  color: #f391e3;
+  text-decoration-style: solid;
+  color:black;
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
 }
 
 a:active,
-a:hover,
+a:hover
+{
+  height: 35px;
+  color:#bbb;
+  margin: 0;
+  margin-top:1px;
+  border: transparent;
+
+}
 a.router-link-active {
-  border: 1px solid #f391e3;
+ color:white;
+  height: 35px;
+  background: #0062FF;
+  margin: 0;
+  margin-top:1px;
+  border: transparent;
+
+
 }
 
 h1 {
@@ -67,7 +88,8 @@ h1 {
 }
 
 h1 a {
-  color: white;
+  color: black;
+  font-size: 0.8em;
   margin: 0;
 }
 
@@ -81,6 +103,7 @@ header nav {
   width: 90%;
   margin: auto;
   display: flex;
+  height:fit-content;
   justify-content: space-between;
   align-items: center;
 }
@@ -95,6 +118,7 @@ header ul {
 }
 
 li {
-  margin: 0 0.5rem;
+  font-size: 0.8rem;
+  margin-top: 0rem;
 }
 </style>
